@@ -26,8 +26,8 @@ export default function useWebRTC(roomId, isInitiator, onFileReceived, onConnect
 
   useEffect(() => {
     if (!roomId) return;
-
-    const socket = io(`${process.env.REACT_APP_API_URL}`,);
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const socket = io(`${apiUrl}`,);
     setSocket(socket);
 
     peerConnectionRef.current = new RTCPeerConnection({
