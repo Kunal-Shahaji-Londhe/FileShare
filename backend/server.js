@@ -3,19 +3,22 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
+const dotenv = require('dotenv');
 
+dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
 // Enable CORS for development
 app.use(cors({
-  origin: 'http://localhost:5173', // Frontend dev server
+  origin: process.env.CORS_ORIGIN, // Frontend dev server
   methods: ['GET', 'POST']
 }));
+console.log(`CORS enabled for origin: ${process.env.CORS_ORIGIN}`);
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: process.env.CORS_ORIGIN,
     methods: ['GET', 'POST']
   }
 });
