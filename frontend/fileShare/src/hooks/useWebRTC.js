@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 
+
 const CHUNK_SIZE = 16384;
 
 export default function useWebRTC(roomId, isInitiator, onFileReceived, onConnectionStatusChange) {
@@ -26,7 +27,7 @@ export default function useWebRTC(roomId, isInitiator, onFileReceived, onConnect
   useEffect(() => {
     if (!roomId) return;
 
-    const socket = io('http://localhost:3000');
+    const socket = io(`${process.env.REACT_APP_API_URL}`,);
     setSocket(socket);
 
     peerConnectionRef.current = new RTCPeerConnection({
