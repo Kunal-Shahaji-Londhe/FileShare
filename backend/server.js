@@ -14,7 +14,7 @@ app.use(cors({
   origin: process.env.CORS_ORIGIN, // Frontend dev server
   methods: ['GET', 'POST']
 }));
-console.log(`CORS enabled for origin: ${process.env.CORS_ORIGIN}`);
+//console.log(`CORS enabled for origin: ${process.env.CORS_ORIGIN}`);
 
 const io = new Server(server, {
   cors: {
